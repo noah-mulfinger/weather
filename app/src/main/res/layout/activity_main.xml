@@ -18,72 +18,127 @@
         android:id="@+id/btnGetData"
         android:text="Get Weather"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/etCityName" />
 
-    <ImageView
-        android:id="@+id/ivIcon"
-        android:layout_width="50dp"
-        android:layout_height="50dp" />
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|top">
 
-    <TextView
-        android:text="Sunrise: "
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TableRow>
+            <ImageView
+                android:id="@+id/ivIcon"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
 
-    <TextView
-        android:id="@+id/tvSunrise"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tvDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            />
 
-    <TextView
-        android:text="Sunset: "
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        </TableRow>
 
-    <TextView
-        android:id="@+id/tvSunset"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TableRow>
+            <TextView
+                android:id="@+id/titleSunrise"
+                android:text="Sunrise at: "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
 
-    <TextView
-        android:text="Temperature Min: "
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tvSunrise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
 
-    <TextView
-        android:id="@+id/tvTempMin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        </TableRow>
 
-    <TextView
-        android:text="Temperature Max: "
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TableRow>
+            <TextView
+                android:id="@+id/titleSunset"
+                android:text="Sunset at: "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
 
-    <TextView
-        android:id="@+id/tvTempMax"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tvSunset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
 
-    <TextView
-        android:text="Humidity: "
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        </TableRow>
 
-    <TextView
-        android:id="@+id/tvHumidity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TableRow>
+            <TextView
+                android:id="@+id/titleTemp"
+                android:text="Current Temp: "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
 
-    <TextView
-        android:text="Description: "
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tvCurrentTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
 
-    <TextView
-        android:id="@+id/tvDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/titleMin"
+                android:text="Temp Min: "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:id="@+id/tvTempMin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/titleMax"
+                android:text="Temp Max: "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:id="@+id/tvTempMax"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/titleHumidity"
+                android:text="Humidity: "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:id="@+id/tvHumidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+
+        </TableRow>
+    </TableLayout>
+
 
 
 

@@ -21,6 +21,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 
 public class MainActivity extends ActionBarActivity {
 
@@ -34,6 +38,7 @@ public class MainActivity extends ActionBarActivity {
     private ImageView ivIcon;
     private TextView tvSunrise;
     private TextView tvSunset;
+    private TextView tvCurrentTemp;
     private TextView tvTempMin;
     private TextView tvTempMax;
     private TextView tvHumidity;
@@ -49,6 +54,7 @@ public class MainActivity extends ActionBarActivity {
         ivIcon = (ImageView) findViewById(R.id.ivIcon);
         tvSunrise = (TextView) findViewById(R.id.tvSunrise);
         tvSunset = (TextView) findViewById(R.id.tvSunset);
+        tvCurrentTemp = (TextView) findViewById(R.id.tvCurrentTemp);
         tvTempMin = (TextView) findViewById(R.id.tvTempMin);
         tvTempMax = (TextView) findViewById(R.id.tvTempMax);
         tvHumidity = (TextView) findViewById(R.id.tvHumidity);
@@ -91,21 +97,28 @@ public class MainActivity extends ActionBarActivity {
                 JSONObject rawJson = new JSONObject(rawResult);
                 String iconCode = ((JSONObject)rawJson.getJSONArray("weather").get(0)).
                         getString("icon");
-                int sunrise = rawJson.getJSONObject("sys").getInt("sunrise");
-                int sunset = rawJson.getJSONObject("sys").getInt("sunset");
+                Date sunrise = new Date(rawJson.getJSONObject("sys").getInt("sunrise"));
+                Date sunset = new Date(rawJson.getJSONObject("sys").getInt("sunset"));
+                int currentTemp = rawJson.getJSONObject("main").getInt("temp");
                 int tempMin = rawJson.getJSONObject("main").getInt("temp_min");
                 int tempMax = rawJson.getJSONObject("main").getInt("temp_max");
                 int humidity = rawJson.getJSONObject("main").getInt("humidity");
                 String desc = ((JSONObject)rawJson.getJSONArray("weather").get(0)).
                         getString("description");
 
+
+                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss", Locale.US);
+                sdf.format(sunrise);
+
+
                 Glide.with(MainActivity.this).load(ICON_URL_BASE
                         +iconCode+ICON_URL_END).into(ivIcon);
-                tvSunrise.setText(String.valueOf(sunrise));
-                tvSunset.setText(String.valueOf(sunset));
-                tvTempMin.setText(String.valueOf(tempMin));
-                tvTempMax.setText(String.valueOf(tempMax));
-                tvHumidity.setText(String.valueOf(humidity));
+                tvSunrise.setText(sdf.format(sunrise));
+                tvSunset.setText(sdf.format(sunset));
+                tvCurrentTemp.setText(String.valueOf(currentTemp)+" C");
+                tvTempMin.setText(String.valueOf(tempMin)+" C");
+                tvTempMax.setText(String.valueOf(tempMax)+" C");
+                tvHumidity.setText(String.valueOf(humidity)+"%");
                 tvDesc.setText(desc);
 
 
