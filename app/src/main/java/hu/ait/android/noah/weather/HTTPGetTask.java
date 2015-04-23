@@ -1,15 +1,19 @@
 package hu.ait.android.noah.weather;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
+
+import com.google.gson.Gson;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import de.greenrobot.event.EventBus;
+import hu.ait.android.noah.weather.data.WeatherData;
 
 /**
  * Created by noah on 4/16/15.
@@ -20,8 +24,6 @@ import java.net.URL;
 //third string because we will be getting a string (json)
 public class HTTPGetTask extends AsyncTask<String, Void, String> {
 
-    public static final String FILTER_RESULT = "FILTER_RESULT";
-    public static final String KEY_RESULT = "KEY_RESULT";
     private Context context;
 
     public HTTPGetTask(Context context) {
@@ -73,8 +75,14 @@ public class HTTPGetTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        Intent intentResult = new Intent(FILTER_RESULT);
-        intentResult.putExtra(KEY_RESULT, result);
-        LocalBroadcastManager.getInstance(context).sendBroadcast(intentResult);
+//        Intent intentResult = new Intent(FILTER_RESULT);
+//        intentResult.putExtra(KEY_RESULT, result);
+//        LocalBroadcastManager.getInstance(context).sendBroadcast(intentResult);
+        Log.d("tag__", result);
+        Gson gson = new Gson();
+        WeatherData data = gson.fromJson(result, WeatherData.class);
+
+        EventBus.getDefault().post(data);
+
     }
 }
